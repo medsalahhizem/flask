@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkerboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1 style="background-color: {{ color1 }}; color: {{ color2 }};">Checkerboard</h1>
+    <div class="wrapper" style="--num1: {{ num1 }}; --num2: {{ num2 }};">
+        {% for i in range(num2) %}
+            {% for j in range(num1) %}
+                {% if (i + j) % 2 == 0 %}
+                    <div class="box" style="background-color: {{ color1 }};"></div>
+                {% else %}
+                    <div class="box" style="background-color: {{ color2 }};"></div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+</body>
+</html>

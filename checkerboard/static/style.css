@@ -1,0 +1,26 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+h1 {
+  margin: 20px;
+  text-align: center;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(var(--num1), 50px);
+  grid-template-rows: repeat(var(--num2), 50px);
+}
+
+.box {
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgb(132, 135, 94);
+}
