@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      text-align: center; /* Center text horizontally */
+  }
+  
+  .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center; /* Center boxes vertically within the container */
+  }
+  
+  .box {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  </style>
+</head>
+
+
+<body>
+<h1>number: {{ count}}</h1>
+<br>
+<h1>color: {{ color}}</h1>
+    <div class="container">
+        {% for _ in range(count) %}
+        <div class="box" style="background-color: {{color}};" ></div>
+        {% endfor %}
+    </div>
+</body>
+</html>
