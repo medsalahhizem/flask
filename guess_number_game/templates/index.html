@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Number Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Great Number Game!!!</h1>
+        <p>I am thinking of a number between 1 and 100.</p>
+
+        {% if session['error'] %}
+            <div class="alert alert-danger">
+                <p>{{ session['error'] }}</p>
+            </div>
+        {% endif %}
+
+        {% if session['attempts'] < 5 and (session['guess'] is none or session['guess'] != session['num']) %}
+        <form action="/guess" method="post">
+            <div class="form-group">
+                <label for="guess">Take a Guess!!!</label>
+                <input type="text" name="guess" id="guess" class="form-control">
+            </div>
+            <input type="submit" value="Guess" class="btn">
+        </form>
+        {% endif %}
+
+        {% if session['guess'] is not none %}
+            {% if session['guess'] == session['num'] %}
+                <div class="card bg-success">
+                    <h2>You got the number!</h2>
+                    <p>It took you {{ session['attempts'] }} attempts.</p>
+                    <a href="/reset" class="btn btn-primary">Play Again</a>
+                </div>
+            {% elif session['attempts'] >= 5 %}
+                <div class="card bg-warning">
+                    <h2>You Lose!!!</h2>
+                    <p>The correct number was {{ session['num'] }}.</p>
+                    <a href="/reset" class="btn btn-primary">Try Again</a>
+                </div>
+            {% elif session['guess'] < session['num'] %}
+                <div class="card bg-danger">
+                    <h2>Too Low!!!</h2>
+                    <p>Attempts: {{ session['attempts'] }}</p>
+                </div>
+            {% else %}
+                <div class="card bg-info">
+                    <h2>Too High!!!</h2>
+                    <p>Attempts: {{ session['attempts'] }}</p>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
