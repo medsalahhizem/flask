@@ -1,0 +1,23 @@
+<!-- server/templates/dojo.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dojo</title>
+</head>
+<body>
+    <h1>Dojo</h1>
+    <form action="/dojos" method="post">
+        <label for="name">Dojo Name:</label>
+        <input type="text" name="name">
+        <input type="submit" value="Add Dojo">
+    </form>
+    <h2>All Dojos</h2>
+    <ul>
+        {% for dojo in all_dojos %}
+        <li><a href="/dojos/{{ dojo.id }}">{{ dojo.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
