@@ -1,0 +1,28 @@
+<!-- server/templates/ninja.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ninja</title>
+</head>
+<body>
+    <h1>Ninja</h1>
+    <form action="/ninjas" method="post">
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name">
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name">
+        <label for="age">Age:</label>
+        <input type="text" name="age">
+        <label >Dojo:</label>
+        <select name="dojos_id">
+            {% for dojo in all_dojos %}
+            <option value="{{ dojo.id }}">{{ dojo.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Add Ninja">
+    </form>
+    <a href="/home">home</a>
+</body>
+</html>
