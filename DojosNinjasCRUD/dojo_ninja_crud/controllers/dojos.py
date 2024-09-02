@@ -1,29 +1,23 @@
-# flask_app/controllers/dojos.py
-
 from flask import render_template, request, redirect
 from dojo_ninja_crud import app
 from dojo_ninja_crud.models.dojo import Dojo
-from dojo_ninja_crud.models.ninja import Ninja
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    dojos = Dojo.get_all()
+    return render_template('index.html', all_dojos=dojos)
 
 @app.route('/dojos')
 def dojos():
     dojos = Dojo.get_all()
-    return render_template("dojo.html", all_dojos=dojos)
+    return render_template("index.html", all_dojos=dojos)
 
 @app.route('/dojos', methods=['POST'])
 def create_dojo():
-    data = {
-        "name": request.form["name"]
-    }
-    Dojo.save(data)
+    Dojo.save(request.form)
     return redirect('/dojos')
 
-@app.route('/dojos/<int:dojo_id>')
-def show_dojo(dojo_id):
-    dojo = Dojo.get_by_id(dojo_id)
-    ninjas = Ninja.get_by_dojo(dojo_id)
-    return render_template("show_dojo.html", dojo=dojo, ninjas=ninjas)
+@app.route('/dojos/<int:id>')
+def show_dojo(id):
+    data={"id":id}
+    return render_template("show_dojo.html", dojo=Dojo.get_one_with_ninjas(data))

@@ -15,13 +15,14 @@
         <input type="text" name="last_name">
         <label for="age">Age:</label>
         <input type="text" name="age">
-        <label for="dojo_id">Dojo:</label>
-        <select name="dojo_id">
+        <label >Dojo:</label>
+        <select name="dojos_id">
             {% for dojo in all_dojos %}
-            <option value="{{ dojo.id }}">{{ dojo.name }}</option>
+            <option value="{{ dojos_id }}">{{ dojo.name }}</option>
             {% endfor %}
         </select>
         <input type="submit" value="Add Ninja">
     </form>
+    <a href="/home">home</a>
 </body>
 </html>

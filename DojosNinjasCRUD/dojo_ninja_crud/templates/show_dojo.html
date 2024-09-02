@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dojo Details</title>
+</head>
+<body>
+  {% if dojo %}
+      <h1>{{ dojo.name }}</h1>
+      <table class="table table-info">
+          <thead>
+              <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Age</th>
+                  <th>Created_at</th>
+                  <th>updated_at</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for ninja in dojo.ninjas %}
+                  <tr>
+                      <td>{{ ninja.first_name }}</td>
+                      <td>{{ ninja.last_name }}</td>
+                      <td>{{ ninja.age }}</td>
+                      <td>{{ ninja.created_at }}</td>
+                      <td>{{ ninja.updated_at }}</td>
+                  </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+  {% else %}
+      <p>No dojo found or no ninjas assigned to this dojo.</p>
+  {% endif %}
+</body>
