@@ -1,0 +1,22 @@
+<!-- templates/topping_with_burgers.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topping with Burgers</title>
+</head>
+<body>
+    <h1>Topping Details</h1>
+    <h2>{{ topping.topping_name }}</h2>
+    <h3>Burgers:</h3>
+    <ul>
+        {% for burger in topping.on_burgers %}
+            <li>{{ burger.name }}</li>
+        {% else %}
+            <li>No burgers associated with this topping.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

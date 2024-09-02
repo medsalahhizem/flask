@@ -1,0 +1,25 @@
+<!-- templates/burger_with_toppings.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger with Toppings</title>
+</head>
+<body>
+    <h1>Burger Details</h1>
+    <h2>{{ burger.name }}</h2>
+    <p>Bun: {{ burger.bun }}</p>
+    <p>Meat: {{ burger.meat }}</p>
+    <p>Calories: {{ burger.calories }}</p>
+    <h3>Toppings:</h3>
+    <ul>
+        {% for topping in burger.toppings %}
+            <li>{{ topping.topping_name }}</li>
+        {% else %}
+            <li>No toppings available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
